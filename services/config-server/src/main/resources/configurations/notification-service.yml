@@ -16,7 +16,7 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: '*' # Allow all packages to be deserialized not in production
-        spring.json.type.mapping: orderConfirmation:com.tengo.ecommerce.kafka.OrderConfirmation,paymentConfirmation:com.tengo.ecommerce.notification.PaymentNotificationRequest
+        spring.json.type.mapping: orderConfirmation:com.tengo.ecommerce.kafka.order.OrderConfirmation,paymentConfirmation:com.tengo.ecommerce.kafka.payment.PaymentConfirmation
 server:
   port: 8040
 
