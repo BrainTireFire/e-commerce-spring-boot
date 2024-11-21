@@ -1,37 +1,37 @@
 services:
-  postgres:
+  postgresql:
     container_name: ms_pg_sql
     image: postgres
     environment:
-      POSTGRES_USER: user #admin
-      POSTGRES_PASSWORD: user #admin
-      PGDATA: /var/lib/postgresql/data
+      POSTGRES_USER: admin #admin
+      POSTGRES_PASSWORD: admin #admin
+      PGDATA: /data/postgres
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - postgres:/data/postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
     networks:
-      - micoservice-net
+      - microservices-net
     restart: unless-stopped
 
   pgadmin:
-    container_name: ms_pg_admin
+    container_name: ms_pgadmin
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@pgadmin.org}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
       - pgadmin:/var/lib/pgadmin
     ports:
-      - 5050:80
+      - "5050:80"
     networks:
-      - micoservice-net
+      - microservices-net
     restart: unless-stopped
 
   mongodb:
-    container_name: ms_mongo_db
     image: mongo
+    container_name: mongo_db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=user
       - MONGO_INITDB_ROOT_PASSWORD=user
@@ -49,25 +49,25 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=user
     ports:
       - 8081:8081
-    restart: unless-stopped
+    restart: always
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
     environment:
-      ZOOKEEPER_SERVER_ID: 1,
-      ZOOKEEPER_CLIENT_PORT: 2181,
-      ZOOKER_TICK_TIME: 2000,
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - 22181:2181
+      - "22181:2181"
     networks:
-      - micoservice-net
+      - microservices-net
 
   kafka:
     image: confluentinc/cp-kafka:latest
     container_name: ms_kafka
     ports:
-      - 9092:9092
+      - "9092:9092"
     depends_on:
       - zookeeper
     environment:
@@ -78,18 +78,17 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
     networks:
-      - micoservice-net
+      - microservices-net
 
   mail-dev:
-    container_name: ms_mail_dev
+    container_name: ms-mail-dev
     image: maildev/maildev
     ports:
       - 1080:1080
       - 1025:1025
 
-
 networks:
-  micoservice-net:
+  microservices-net:
     driver: bridge
 
 volumes:

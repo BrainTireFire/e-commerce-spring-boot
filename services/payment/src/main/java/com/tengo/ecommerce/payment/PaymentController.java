@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PaymentController {
 
-    private final PaymentService paymentService;
+    private final PaymentService service;
 
     @PostMapping
     public ResponseEntity<Integer> createPayment(
-            @RequestBody @Valid PaymentRequest paymentRequest
+            @RequestBody @Valid PaymentRequest request
     ) {
-        return ResponseEntity.ok(paymentService.createPayment(paymentRequest));
+        return ResponseEntity.ok(this.service.createPayment(request));
     }
 }

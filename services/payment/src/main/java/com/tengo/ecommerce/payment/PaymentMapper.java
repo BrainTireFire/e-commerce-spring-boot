@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 public class PaymentMapper {
 
     public Payment ToPayment(PaymentRequest paymentRequest) {
+        if (paymentRequest == null) {
+            return null;
+        }
+
         return Payment.builder()
                 .id(paymentRequest.id())
                 .orderId(paymentRequest.orderId())

@@ -6,8 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: false
+      ddl-auto: create
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   kafka:
@@ -17,5 +16,10 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.type.mapping: paymentConfirmation:com.tengo.ecommerce.notification.PaymentNotificationRequest
+
+application:
+  config:
+    product-url: http://localhost:8222/api/v1/products
+
 server:
   port: 8060
