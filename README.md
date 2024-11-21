@@ -13,3 +13,5 @@ E-commerce project in microservices.
 - Docker
 - Eureka
 - Spring cloud
+- Zipkin
+- Prometheus and grafana
