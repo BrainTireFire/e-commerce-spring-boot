@@ -1,0 +1,52 @@
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+scrape_configs:
+  - job_name: 'product-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:8050']
+        labels:
+          application: 'Product Service Application'
+  - job_name: 'payment-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'localhost:8060' ]
+        labels:
+          application: 'Payment Service Application'
+  - job_name: 'order-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'localhost:8070' ]
+        labels:
+          application: 'Order Service Application'
+#  - job_name: 'config-server'
+#    metrics_path: '/actuator/prometheus'
+#    static_configs:
+#      - targets: [ 'localhost:8888' ]
+#        labels:
+#          application: 'Config Server Application'
+#  - job_name: 'gateway-service'
+#    metrics_path: '/actuator/prometheus'
+#    static_configs:
+#      - targets: [ 'localhost:8222' ]
+#        labels:
+#          application: 'Gateway Service Application'
+  - job_name: 'customer-server'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'localhost:8090' ]
+        labels:
+          application: 'Customer Server Application'
+  - job_name: 'notification-server'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'localhost:8040' ]
+        labels:
+          application: 'Notification Server Application'
+#  - job_name: 'discovery-server'
+#    metrics_path: '/actuator/prometheus'
+#    static_configs:
+#      - targets: [ 'localhost:8761' ]
+#        labels:
+#          application: 'Discovery Server Application'
