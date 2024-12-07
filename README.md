@@ -28,3 +28,23 @@ This project is an **E-commerce platform** designed with a **microservices archi
 - **Service Discovery**: Dynamic microservice registration with Eureka.  
 - **Observability**: Distributed tracing with Zipkin and monitoring with Prometheus and Grafana.  
 - **Containerized Deployment**: Simplified deployments using Docker.  
+
+---
+
+## 🏗️ Microservices  
+
+### Core Services  
+- **Config Server**: Centralized configuration management for all microservices.  
+- **Customer Service**: Manages customer profiles, order history, and customer-related operations.  
+- **Discovery Service**: Provides service discovery using Eureka to allow microservices to find and communicate with each other dynamically.  
+- **Gateway Service**: A single entry point for client requests, routing them to the appropriate services.  
+- **Notification Service**: Handles sending notifications to customers about orders, promotions, and updates.  
+- **Order Service**: Manages customer orders, including creation, updates, and status tracking.  
+- **Payment Service**: Responsible for processing payments, integrating with external payment gateways.  
+- **Product Service**: Manages the product catalog, including product listings, details, and inventory.  
+
+---
+
+## 🗄️ Databases  
+- **PostgreSQL**: Relational database used for managing structured data, such as customer profiles, orders, and product details.  
+- **MongoDB**: NoSQL database used for managing unstructured data, like logs, events, and application analytics.
