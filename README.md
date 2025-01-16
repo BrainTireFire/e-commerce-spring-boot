@@ -1,7 +1,9 @@
 # E-commerce Project  
 
 ## 📖 Overview  
-This project is an **E-commerce platform** designed with a **microservices architecture**. It leverages a range of modern technologies to ensure scalability, reliability, and performance. The project demonstrates a modular approach to building large-scale applications while integrating essential services such as authentication, messaging, monitoring, and service discovery.  
+This project is an **E-commerce platform** designed with a **microservices architecture**. It leverages a range of modern technologies to ensure scalability, reliability, and performance. The project demonstrates a modular approach to building large-scale applications while integrating essential services such as authentication, messaging, monitoring, and service discovery. 
+
+This project is inspired by a course created by **Bouali Ali**. You can find more information and resources about the course on his YouTube channel [Bouali Ali](https://www.youtube.com/@BoualiAli), where he dives deep into the development and architecture of such systems.
 
 ---
 
